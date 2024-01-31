@@ -1,4 +1,4 @@
-import typing import Dict, List, Optional
+from typing import Dict, List, Optional
 from flask import Flask, request, jsonify
 import pathlib
 import uuid
