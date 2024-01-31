@@ -1,3 +1,9 @@
+import typing import Dict, List, Optional
+from flask import Flask, request, jsonify
+import pathlib
+import uuid
+import json
+
 def load_mail() -> List[Dict[str, str]]:
     """
     Loads the mail from the json file.
