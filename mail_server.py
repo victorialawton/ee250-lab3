@@ -183,7 +183,23 @@ def get_inbox_route(recipient: str):
 # TODO: implement a rout e to get all mail entries for a sender
 # HINT: start with soemthing like this:
 #   @app.route('/mail/sent/<sender>', ...)
+@app.route('/mail/sent/<sender>', methods=['GET'])
+def get_sent_route(sender: str):
+    """
+    Summary: Gets all mail entries sent by a sender from the json file
 
+    Args:
+        sender (str): The sender of the mail
+
+    Returns:
+        list: A list of dictionaries representing the mail entries sent by the sender
+    """
+    sent_mail = get_sent(sender)
+    if sent_mail:
+        return jsonify(sent_mail), 200
+    else:
+        return jsonify({'error': 'No mail found for this sender'}), 404
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
+    
